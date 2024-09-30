@@ -1,0 +1,127 @@
+@import '../../Helper/helper.scss';
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.login {
+  height: 100vh;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #121212; // Background color
+
+  a {
+    text-decoration: underline;
+    color: $primaryColor;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: darken($primaryColor, 10%); // Darken on hover
+    }
+  }
+
+  .login__container {
+    min-width: 600px;
+    padding: 2rem;
+    background-color: #1e1e1e; // Container background
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    animation: slideIn 0.5s ease forwards; // Slide in animation
+
+    &:hover {
+      transform: translateY(-5px); // Slight lift on hover
+    }
+  }
+
+  .login__header {
+    margin-bottom: 30px;
+
+    h1 {
+      margin-bottom: 0.625rem;
+      text-transform: capitalize;
+      color: #ffffff; // Header text color
+    }
+
+    p {
+      color: #888888;
+    }
+  }
+
+  .form__control {
+    width: 100%;
+
+    input,
+    select {
+      margin-bottom: 1.25rem;
+      @include formInputStyle(100%);
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: $primaryColor; // Change border color on focus
+        outline: none;
+      }
+    }
+  }
+
+  .btn {
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 0.313rem;
+    border: none;
+    outline: none;
+    background-color: $primaryColor;
+    color: #ffffff;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    margin-bottom: 0.625rem;
+
+    &:hover {
+      background-color: $primaryHover;
+      transform: scale(1.05); // Slightly enlarge on hover
+    }
+  }
+
+  .small__text {
+    text-align: center;
+    color: #888888;
+    font-size: 14px;
+
+    .registerLink {
+      text-decoration: none;
+      color: $primaryColor;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: darken($primaryColor, 10%); // Darken on hover
+      }
+    }
+  }
+
+  // Shake animation for form control
+  .shake {
+    animation: shake 0.5s ease forwards; // Apply shake animation
+  }
+}
